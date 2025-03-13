@@ -165,11 +165,32 @@
     }
 
     // 复制消息内容函数（优先复制数据属性中的原始 markdown）
+	/*
     function copyMessageContent(btn) {
       const messageContent = btn.parentElement.querySelector('.message-content');
       if (messageContent) {
         const text = messageContent.dataset.original || messageContent.innerText;
         navigator.clipboard.writeText(text).then(() => {
+          btn.textContent = '已复制';
+          setTimeout(() => { btn.textContent = '复制'; }, 2000);
+        }).catch(err => {
+          console.error('复制失败', err);
+        });
+      }
+    }
+	*/
+	// 修改后的复制消息内容函数
+    function copyMessageContent(btn) {
+      const messageContent = btn.parentElement.querySelector('.message-content');
+      if (messageContent) {
+        const text = messageContent.dataset.original || messageContent.innerText;
+        
+        // 新增公式格式转换
+        const convertedText = text
+          .replace(/\\\(/g, '$').replace(/\\\)/g, '$')     // 行内公式转换
+          .replace(/\\\[/g, '$$').replace(/\\\]/g, '$$');  // 块公式转换
+
+        navigator.clipboard.writeText(convertedText).then(() => {
           btn.textContent = '已复制';
           setTimeout(() => { btn.textContent = '复制'; }, 2000);
         }).catch(err => {
