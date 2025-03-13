@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="config.js"></script>
   <!-- MathJax 配置 -->
   <script>
     window.MathJax = {
@@ -227,9 +228,12 @@
     }
 
     // 初始化配置
-    const API_KEY = '';
+    //const API_KEY = '';
     const API_URL = 'https://api.deepseek.com/chat/completions';
-
+	
+	// 从本地文件读取 api key
+	let API_KEY = '';
+	
     let fileHandle = null;
     let sessions = [];
     let currentSessionId = null;
@@ -244,7 +248,49 @@
         this.model = 'deepseek-chat';
       }
     }
+	
+	async function loadConfig() {
+    return new Promise((resolve) => {
+        // 检查是否已加载配置
+        const checkConfig = () => {
+            if (window.CONFIG?.API_KEY) {
+                API_KEY = window.CONFIG.API_KEY;
+                resolve(true);
+            } else {
+                setTimeout(checkConfig, 100);
+            }
+        };
+        
+        // 启动检查
+        checkConfig();
+        
+        // 超时处理
+        setTimeout(() => {
+            if (!API_KEY) {
+                showError('未检测到有效配置文件');
+                resolve(false);
+            }
+        }, 3000);
+    });
+}
 
+	  // 新增错误提示函数
+    function showError(message) {
+        const container = document.getElementById('chatContainer');
+        container.innerHTML = `
+            <div class="p-4 bg-red-100 text-red-700 rounded-lg">
+                <strong>错误:</strong> ${message}
+                <div class="mt-2 text-sm">
+                    请创建配置文件 <code>config.json</code>，格式示例：
+                    <pre class="bg-gray-100 p-2 rounded mt-1">
+{
+  "API_KEY": "your-api-key-here"
+}</pre>
+                </div>
+            </div>
+        `;
+    }
+	
     // 配置 marked 和 highlight.js
     marked.setOptions({ 
       breaks: true,
@@ -370,6 +416,11 @@
       });
     }
     async function initializeApp() {
+	
+		// 先加载配置
+        const configLoaded = await loadConfig();
+        if (!configLoaded) return;
+		
       try {
         const storedHandle = await getFileHandleFromDB();
         if (storedHandle) {
