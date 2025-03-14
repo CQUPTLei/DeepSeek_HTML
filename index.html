@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepSeek Chat</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="js/config.js"></script>
+  <!-- MathJax 配置 -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-100 h-screen">
+  <div class="flex h-screen">
+    <!-- 会话侧边栏 -->
+    <div class="w-64 bg-white border-r flex flex-col">
+      <div class="p-4 border-b">
+        <button id="newChatButton" class="w-full bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition-colors">
+          新对话
+        </button>
+      </div>
+      <div class="flex-1 overflow-y-auto" id="sessionList"></div>
+    </div>
+
+    <!-- 主聊天区域 -->
+    <div class="flex-1 flex flex-col">
+      <header class="bg-white shadow-sm py-4 px-6 flex items-center justify-between">
+        <h1 class="text-2xl font-bold text-indigo-600">DeepSeek Chat</h1>
+        <div class="flex items-center space-x-4">
+          <select id="modelSelect" class="px-4 py-2 border rounded-lg bg-white">
+            <option value="deepseek-chat">V3模型</option>
+            <option value="deepseek-reasoner">R1模型</option>
+          </select>
+          <div class="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-white">AI</div>
+        </div>
+      </header>
+
+      <!-- 对话区 -->
+      <div id="chatContainer" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+
+      <div class="bg-white border-t p-4">
+        <div class="relative">
+          <textarea id="inputBox" rows="2" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none" placeholder="输入您的问题..."></textarea>
+          <button id="sendButton" class="absolute bottom-3 right-3 bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition-colors">
+            发送
+          </button>
+        </div>
+        <p class="text-sm text-gray-500 mt-2">Shift + Enter 换行，Enter 发送</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/function.js"></script>
+</body>
+</html>

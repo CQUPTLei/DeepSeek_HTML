@@ -1,0 +1,81 @@
+/* 代码块样式修复 */
+.markdown-body pre {
+  background-color: #f8f8f8 !important;
+  border: 1px solid #e1e4e8 !important;
+  border-radius: 6px !important;
+  padding: 16px !important;
+  margin: 1em 0;
+  position: relative;
+}
+.markdown-body code {
+  background-color: rgba(175,184,193,0.2) !important;
+  color: #24292f !important;
+  padding: 0.2em 0.4em !important;
+  border-radius: 6px !important;
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace !important;
+}
+/* 用户消息代码块特殊样式 */
+.user-message .markdown-body pre {
+  background-color: #eef2ff !important;
+  border-color: #c7d2fe !important;
+}
+.user-message .markdown-body code {
+  background-color: rgba(199,210,254,0.3) !important;
+  color: #1e3a8a !important;
+}
+/* 新增覆盖规则，解决用户消息文字背景色异常问题 */
+.user-message .markdown-body {
+  background-color: transparent !important;
+  color: black !important;
+}
+/* 覆盖highlight.js默认样式 */
+.hljs {
+  background: transparent !important;
+  padding: 0 !important;
+}
+pre code.hljs {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+/* 滚动条样式 */
+#sessionList::-webkit-scrollbar {
+  width: 4px;
+}
+#sessionList::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 2px;
+}
+#chatContainer::-webkit-scrollbar {
+  width: 6px;
+}
+#chatContainer::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+#chatContainer::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+/* 加载动画 */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+/* 代码块复制按钮 */
+.copy-code-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #e2e8f0;
+  color: #1a202c;
+  border: none;
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* 消息复制按钮 */
+.message-copy-btn {
+  cursor: pointer;
+}
