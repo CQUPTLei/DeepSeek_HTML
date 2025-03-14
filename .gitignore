@@ -1,1 +1,3 @@
-test.js
+js/config.js
+chat_history/*
+!chat_history/example.json
