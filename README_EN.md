@@ -1,6 +1,6 @@
 # DeepSeek_HTML
 
-**Simplified Chinese instructions**: [README_CN.md](https://github.com/CQUPTLei/DeepSeek_HTML/README_CN.md)
+**Simplified Chinese instructions**: [README_CN.md](https://github.com/CQUPTLei/DeepSeek_HTML/README.md)
 
 ☘️ **Project Address**: [https://github.com/CQUPTLei/DeepSeek_HTML/tree/master](https://github.com/CQUPTLei/DeepSeek_HTML/tree/master)
 
