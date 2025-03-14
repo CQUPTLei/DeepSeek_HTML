@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script src="config.js"></script>
+  <script src="js/config.js"></script>
   <!-- MathJax 配置 -->
   <script>
     window.MathJax = {
@@ -452,7 +452,7 @@
           sessions = [];
         }
       } catch (e) {
-        console.error("存储的文件句柄无效：", e);
+        console.warn("存储的文件句柄无效：", e);
         await removeStoredFileHandle();
         showFilePickerPrompt("无法访问保存的文件，请选择新的保存位置。");
         sessions = [];

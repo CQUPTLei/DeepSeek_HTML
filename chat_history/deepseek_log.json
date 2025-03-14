@@ -139,6 +139,14 @@
       {
         "role": "assistant",
         "content": "以下是一个简单的C语言程序，可以计算并输出两个整数的和：\n\n```c\n#include <stdio.h>\n\nint main() {\n    int num1, num2, sum;\n\n    // 输入第一个数字\n    printf(\"请输入第一个整数: \");\n    scanf(\"%d\", &num1);\n\n    // 输入第二个数字\n    printf(\"请输入第二个整数: \");\n    scanf(\"%d\", &num2);\n\n    // 计算和\n    sum = num1 + num2;\n\n    // 输出结果\n    printf(\"%d + %d = %d\\n\", num1, num2, sum);\n\n    return 0;\n}\n```\n\n程序功能：\n1. 包含标准输入输出库\n2. 从用户获取两个整数输入\n3. 计算它们的和\n4. 输出完整的加法算式\n\n运行效果示例：\n```\n请输入第一个整数: 12\n请输入第二个整数: 30\n12 + 30 = 42\n```\n\n这个程序演示了C语言的基本结构，包含：\n- 头文件包含\n- main函数\n- 变量声明\n- 输入输出操作\n- 算术运算\n- 格式化字符串输出\n\n需要说明的是，如果输入非整数可能会导致程序异常，正式项目中需要添加输入验证，但作为简单示例这里省略了异常处理。"
+      },
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "您好！有什么我可以帮您的吗？无论是技术问题、编程示例还是其他需求，随时告诉我~ 😊"
       }
     ],
     "model": "deepseek-reasoner"
